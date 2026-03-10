@@ -6,103 +6,151 @@
 
 <title>🌙 My Eid Wishlist</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
+*{box-sizing:border-box}
+
 body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(180deg,#0b0f1a,#111827);
-    color:white;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(180deg,#020202,#0a0a0a,#111);
+color:white;
+overflow-x:hidden;
 }
 
-/* Header */
+/* STAR BACKGROUND */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(#FFD700 1px, transparent 1px);
+background-size:55px 55px;
+opacity:.08;
+animation:starsMove 90s linear infinite;
+z-index:-1;
+}
+
+@keyframes starsMove{
+from{transform:translateY(0);}
+to{transform:translateY(-600px);}
+}
+
+/* HEADER */
 header{
-    text-align:center;
-    padding:40px 20px;
+text-align:center;
+padding:60px 20px 30px;
 }
 
-header h1{
-    font-family:'Cinzel',serif;
-    font-size:42px;
-    color:#FFD700;
-}
-
-header p{
-    opacity:0.8;
-}
-
-/* Crescent decoration */
 .moon{
-    font-size:40px;
-    margin-bottom:10px;
+font-size:58px;
+animation:moonGlow 3s ease-in-out infinite alternate;
 }
 
-/* Grid */
+@keyframes moonGlow{
+from{filter:drop-shadow(0 0 6px gold);}
+to{filter:drop-shadow(0 0 24px gold);}
+}
+
+h1{
+font-family:'Cinzel',serif;
+font-size:48px;
+color:#FFD700;
+margin:10px 0;
+text-shadow:0 0 20px rgba(255,215,0,.6);
+}
+
+.subtitle{
+opacity:.8;
+}
+
+/* GRID */
 .container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+max-width:1150px;
+margin:auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
-/* Cards */
+/* CARD */
 .card{
-    background:#1f2937;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 0 20px rgba(255,215,0,0.15);
-    transition:0.3s;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(14px);
+border-radius:18px;
+overflow:hidden;
+transition:.4s;
+box-shadow:0 0 25px rgba(255,215,0,.15);
+opacity:0;
+transform:translateY(30px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 0 30px rgba(255,215,0,0.4);
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 45px rgba(255,215,0,.6);
 }
 
 .card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
+width:100%;
+height:220px;
+object-fit:cover;
 }
 
-.card-content{
-    padding:15px;
+.content{
+padding:18px;
 }
 
-.card h3{
-    margin:5px 0;
-    color:#FFD700;
+.content h3{
+margin:0;
+color:#FFD700;
 }
 
 .price{
-    font-weight:bold;
-    margin:8px 0;
+margin:10px 0;
+font-weight:bold;
+font-size:18px;
 }
 
-.buy-btn{
-    display:inline-block;
-    padding:10px 15px;
-    background:#FFD700;
-    color:black;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:600;
+.buy{
+display:inline-block;
+padding:12px 18px;
+background:linear-gradient(45deg,#FFD700,#fff3b0);
+color:black;
+text-decoration:none;
+border-radius:10px;
+font-weight:600;
+transition:.3s;
 }
 
-.buy-btn:hover{
-    background:white;
+.buy:hover{
+transform:scale(1.05);
 }
 
-/* Footer */
+/* TOTAL */
+.total{
+text-align:center;
+margin:40px;
+font-size:24px;
+color:#FFD700;
+}
+
+/* FOOTER */
 footer{
-    text-align:center;
-    padding:25px;
-    opacity:0.6;
+text-align:center;
+padding:30px;
+opacity:.7;
+}
+
+@media(max-width:600px){
+h1{font-size:36px}
 }
 
 </style>
@@ -113,49 +161,58 @@ footer{
 <header>
 <div class="moon">🌙</div>
 <h1>My Eid Wishlist</h1>
-<p>✨ Presents I'd love this Eid ✨</p>
+<p class="subtitle">✨ Luxury gifts I'd love this Eid ✨</p>
 </header>
 
 <div class="container">
 
-<!-- ITEM 1 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
-<div class="card-content">
-<h3>New Laptop</h3>
-<p>For school & projects</p>
-<div class="price">$899</div>
-<a class="buy-btn" href="https://example.com" target="_blank">View Gift</a>
+<div class="card" data-price="89.99">
+<img src="https://i.ebayimg.com/images/g/placeholder/s-l1600.jpg">
+<div class="content">
+<h3>Mercedes-Benz Key Fob</h3>
+<p>Luxury replacement smart key fob — perfect Eid gift.</p>
+<div class="price">$89.99</div>
+
+<a class="buy"
+href="https://www.ebay.com/itm/167498763590"
+target="_blank">
+View on eBay
+</a>
+
 </div>
 </div>
 
-<!-- ITEM 2 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9">
-<div class="card-content">
-<h3>Wireless Headphones</h3>
-<p>Noise cancelling headphones</p>
-<div class="price">$199</div>
-<a class="buy-btn" href="https://example.com" target="_blank">View Gift</a>
-</div>
 </div>
 
-<!-- ITEM 3 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12">
-<div class="card-content">
-<h3>Smart Watch</h3>
-<p>Fitness & daily use</p>
-<div class="price">$149</div>
-<a class="buy-btn" href="https://example.com" target="_blank">View Gift</a>
-</div>
-</div>
-
+<div class="total">
+Total Wishlist Value: $<span id="totalPrice">0.00</span>
 </div>
 
 <footer>
 🌙 Eid Mubarak 🌙
 </footer>
+
+<script>
+
+let total = 0;
+document.querySelectorAll(".card").forEach(card=>{
+total += Number(card.dataset.price);
+});
+document.getElementById("totalPrice").innerText = total.toFixed(2);
+
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+cards.forEach(card=>observer.observe(card));
+
+</script>
 
 </body>
 </html>
